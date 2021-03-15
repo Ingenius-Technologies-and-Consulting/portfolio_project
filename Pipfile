@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+streamlit = "*"
+pyjwt = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-cov = "*"
+django-rest-swagger = "*"
+beautifulsoup4 = "*"
+pandas = "*"
+numpy = "*"
+yfinance = "*"
+plotly = "*"
+pyportfolioopt = "*"
+django-extensions = "*"
+scipy = "*"
+matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
