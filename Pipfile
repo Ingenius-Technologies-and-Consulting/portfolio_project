@@ -16,12 +16,12 @@ django-rest-swagger = "*"
 beautifulsoup4 = "*"
 pandas = "*"
 numpy = "*"
-yfinance = "*"
 plotly = "*"
 pyportfolioopt = "*"
 django-extensions = "*"
 scipy = "*"
 matplotlib = "*"
+yfinance = "*"
 
 [dev-packages]
 

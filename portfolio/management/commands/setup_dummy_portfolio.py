@@ -35,13 +35,17 @@ class Command(BaseCommand):
 			start_date = random_date.strftime('%Y-%m-%d')
 			end_date = (random_date + timedelta(days = 1)).strftime('%Y-%m-%d')
 			ticker = yf.Ticker(random_stock.asset_symbol)
-			ticker_price = ticker.history(start = start_date, end = end_date)
+			try:
+				ticker_price = ticker.history(start = start_date, end = end_date)
+			except Exception as e:
+				print("Error", str(e))
+				continue
 			if ticker_price.empty:
 				continue
 			else:
 				ticker_price = ticker_price.head(1)['Close'].values[0]
 				print(ticker_price)
-				new_transction = Transaction.objects.create(portfolio = new_portfolio, asset = random_stock, transaction_type = transaction_type, amount = investment_amount, transaction_price = ticker_price, transaction_date = random_date)
+				new_transaction = Transaction.objects.create(portfolio = new_portfolio, asset = random_stock, transaction_type = transaction_type, amount = investment_amount, transaction_price = ticker_price, transaction_date = random_date)
 
 			
 
