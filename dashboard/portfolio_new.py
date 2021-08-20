@@ -21,11 +21,16 @@ def get_company_name(ticker: str) -> str:
 	"""
 	Get company name for a symbol
 	"""
-	url = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + ticker + '&region=1&lang=en'
-	result = requests.get(url).json()
-	for r in result['ResultSet']['Result']:
-		if r['symbol'] == ticker:
-			return r['name']
+	# print("Getting company name for ticker {}".format(ticker))
+	# url = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + ticker + '&region=1&lang=en'
+	# result = requests.get(url).json()
+	# for r in result['ResultSet']['Result']:
+	# 	if r['symbol'] == ticker:
+	# 		return r['name']
+	ticker = yf.Ticker(ticker)
+	company_name = ticker.info['longName']
+	print("Company Ticker {} Company Name {}".format(ticker, company_name))
+	return company_name
 
 def portfolio_annualised_performance(weights, mean_returns, cov_matrix):
   returns = np.sum(mean_returns*weights ) *252
