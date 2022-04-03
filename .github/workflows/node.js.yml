@@ -1,0 +1,19 @@
+name: DEPLOY
+
+# Controls when the action will run.
+on:
+  push:
+    branches: [master]
+
+# A workflow run is made up of one
+jobs:
+  deploy:
+    name: DEPLOY
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: using caprover deploy cli
+        run: |
+          npm install -g caprover
+          caprover deploy -h https://captain.apps.ingenius.global --appToken ${{ secrets.CAP_PASS }} -b master -a portfolio
